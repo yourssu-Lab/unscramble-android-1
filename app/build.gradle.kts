@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.yourssu.unscramble"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.yourssu.unscramble"
