@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import com.yourssu.unscramble.base.BindFragment
 import com.yourssu.unscramble.databinding.FragmentExampleBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ExampleFragment : BindFragment<FragmentExampleBinding>() {
 
     override fun setBinding(layoutInflater: LayoutInflater): FragmentExampleBinding {
