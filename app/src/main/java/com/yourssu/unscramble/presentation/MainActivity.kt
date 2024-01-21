@@ -1,4 +1,4 @@
-package com.yourssu.unscramble
+package com.yourssu.unscramble.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
