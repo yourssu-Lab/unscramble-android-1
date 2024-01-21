@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import com.yourssu.unscramble.base.BindActivity
 import com.yourssu.unscramble.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BindActivity<ActivityMainBinding>() {
 
     override fun setBinding(layoutInflater: LayoutInflater): ActivityMainBinding {
