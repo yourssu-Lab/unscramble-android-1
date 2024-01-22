@@ -1,4 +1,4 @@
-package com.yourssu.unscramble
+package com.yourssu.unscramble.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,13 +10,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.yourssu.unscramble.ui.theme.Yourssu_rookies_unscrambleTheme
 
-class MainActivity : ComponentActivity() {
+class ComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Yourssu_rookies_unscrambleTheme {
+            MaterialTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -40,7 +39,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    Yourssu_rookies_unscrambleTheme {
+    MaterialTheme {
         Greeting("Android")
     }
 }
