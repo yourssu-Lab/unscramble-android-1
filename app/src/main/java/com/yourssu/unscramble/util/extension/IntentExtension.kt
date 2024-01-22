@@ -1,4 +1,4 @@
-package com.yourssu.unscramble.util
+package com.yourssu.unscramble.util.extension
 
 import android.content.Intent
 import android.os.Build.VERSION.SDK_INT

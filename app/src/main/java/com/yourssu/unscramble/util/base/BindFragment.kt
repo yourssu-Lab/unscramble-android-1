@@ -1,4 +1,4 @@
-package com.yourssu.unscramble.base
+package com.yourssu.unscramble.util.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 abstract class BindFragment<B : ViewBinding> : Fragment() {
 
     private var _binding: B? = null

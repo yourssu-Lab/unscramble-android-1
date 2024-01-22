@@ -1,4 +1,4 @@
-package com.yourssu.unscramble.util
+package com.yourssu.unscramble.util.extension
 
 import android.view.View
 import com.google.android.material.snackbar.Snackbar

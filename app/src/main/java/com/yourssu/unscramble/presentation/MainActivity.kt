@@ -2,7 +2,7 @@ package com.yourssu.unscramble.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import com.yourssu.unscramble.base.BindActivity
+import com.yourssu.unscramble.util.base.BindActivity
 import com.yourssu.unscramble.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 

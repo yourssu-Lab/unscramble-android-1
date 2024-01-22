@@ -1,4 +1,4 @@
-package com.yourssu.unscramble.util
+package com.yourssu.unscramble.util.extension
 
 import android.content.Context
 import android.widget.Toast

@@ -3,7 +3,7 @@ package com.yourssu.unscramble.presentation
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import com.yourssu.unscramble.base.BindFragment
+import com.yourssu.unscramble.util.base.BindFragment
 import com.yourssu.unscramble.databinding.FragmentExampleBinding
 import dagger.hilt.android.AndroidEntryPoint
 
