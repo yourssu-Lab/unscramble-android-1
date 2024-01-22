@@ -80,7 +80,6 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
     implementation("com.jakewharton.timber:timber:5.0.1")
-    implementation("io.coil-kt:coil:2.3.0")
 
     // Kotlin
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
@@ -90,5 +89,5 @@ dependencies {
     kapt("androidx.hilt:hilt-compiler:1.0.0-alpha03")
 
     // YDS for both XML and Compose
-    implementation("com.github.yourssu:YDS-Android:2.5.2")
+    implementation("com.github.yourssu:YDS-Android:2.3.2")
 }
