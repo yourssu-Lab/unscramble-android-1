@@ -5,9 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 
 abstract class BindActivity<B : ViewBinding> : AppCompatActivity() {
 
