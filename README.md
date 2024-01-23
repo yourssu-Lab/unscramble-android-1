@@ -1,5 +1,28 @@
 ## unscramble-android-1
 
+### Branch name
+- 개인 개발 브랜치
+  ` feature/{nickname}/{feature-name}`
+- 공용 개발 브랜치
+  `feature/{feature-name}`
+
+### 예시
+- 개인 브랜치 → develop
+> feature/mint/search → develop
+> feature/harry/search → develop
+> feature/peter/search → develop
+
+- 공용 브랜치 → develop
+> feature/search → develop
+
+- 개인 브랜치 → 공용 브랜치
+> feature/peter/search → feature/search
+
+
+### PR Title
+`[<repo name>-#<issue num>] <title>`
+- repo name은  UA1
+
 ### ✏️ Commit Convention
 `<타입> : <제목> 형식으로 작성하며 제목은 최대 50글자 정도로만 입력`
 - 제목 끝에 마침표 금지, 무엇을 했는지 명확하게 작성
