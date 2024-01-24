@@ -2,4 +2,9 @@
     <string name="app_name">yourssu_rookies_unscramble</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="all_start">start</string>
+    <string name="all_set_timer">타이머 설정</string>
+    <string name="tv_timer_line">:</string>
+    <string name="et_hint_hour">10</string>
+    <string name="et_hint_minute">00</string>
 </resources>
