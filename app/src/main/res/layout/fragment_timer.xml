@@ -52,7 +52,7 @@
             android:id="@+id/tv_hour_minute"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_timer_line"
+            android:text="@string/all_timer_line"
             android:textColor="@color/white"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
