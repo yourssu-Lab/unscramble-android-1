@@ -129,7 +129,7 @@
                 app:typo="title1"
                 tools:text="feer" />
 
-            <EditText
+            <com.yourssu.design.system.atom.SimpleTextField
                 android:id="@+id/et_answer"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
@@ -158,7 +158,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_answer">
 
 
-                <androidx.appcompat.widget.AppCompatButton
+                <com.yourssu.design.system.atom.BoxButton
                     android:id="@+id/btn_submit"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
