@@ -20,7 +20,7 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnPlay.setOnClickListener {
+        binding.btnSubmit.setOnClickListener {
             // Navigate to TimeFragment
             findNavController().navigate(R.id.endFragment)
         }
