@@ -81,7 +81,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:rounding="@{8}"
-            app:size="@{BoxButton.ExtraLarge}"
+            app:size="@{BoxButton.Large}"
             app:text="@{viewModel.retry}"
             app:type="@{BoxButton.FILLED}" />
 
@@ -96,7 +96,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:rounding="@{8}"
-            app:size="@{BoxButton.ExtraLarge}"
+            app:size="@{BoxButton.Large}"
             app:text="@{viewModel.home}"
             app:type="@{BoxButton.LINE}" />
     </androidx.constraintlayout.widget.ConstraintLayout>

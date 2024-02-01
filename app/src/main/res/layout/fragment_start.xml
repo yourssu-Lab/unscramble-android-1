@@ -50,7 +50,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:rounding="@{8}"
-            app:size="@{BoxButton.ExtraLarge}"
+            app:size="@{BoxButton.Large}"
             app:text="@{viewModel.btn}"
             app:type="@{BoxButton.FILLED}" />
 
