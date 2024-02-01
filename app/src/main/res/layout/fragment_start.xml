@@ -8,7 +8,7 @@
         <import type="com.yourssu.design.system.atom.BoxButton"/>
         <variable
             name="viewModel"
-            type="com.yourssu.unscramble.presentation.StartViewModel" />
+            type="com.yourssu.unscramble.presentation.start.StartViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

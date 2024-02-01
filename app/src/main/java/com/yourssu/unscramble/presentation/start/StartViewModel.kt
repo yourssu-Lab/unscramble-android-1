@@ -1,4 +1,4 @@
-package com.yourssu.unscramble.presentation
+package com.yourssu.unscramble.presentation.start
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
