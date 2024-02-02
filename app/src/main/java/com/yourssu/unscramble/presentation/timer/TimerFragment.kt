@@ -21,6 +21,9 @@ class TimerFragment : BindFragment<FragmentTimerBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         binding.btnTimer.setOnClickListener {
             // Navigate to TimeFragment
             findNavController().navigate(R.id.playFragment)

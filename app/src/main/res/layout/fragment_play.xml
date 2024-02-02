@@ -6,9 +6,13 @@
 
     <data>
 
+        <import type="com.yourssu.design.system.atom.Text" />
+
+        <import type="com.yourssu.design.system.atom.BoxButton" />
+
         <variable
             name="viewModel"
-            type="com.yourssu.unscramble.presentation.play.PlayFragment" />
+            type="com.yourssu.unscramble.presentation.play.PlayViewModel" />
     </data>
 
     <ScrollView
@@ -36,12 +40,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
                     android:layout_marginStart="22dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/textBright"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:text="@{viewModel.solvedProblem}"
                     app:typo="subtitle1"
                     tools:text="0" />
 
@@ -52,9 +55,7 @@
                     android:layout_marginVertical="5dp"
                     android:layout_marginStart="2dp"
                     android:text="@string/problem_total_problems"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/textBright"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/tv_solved_problems"
                     app:layout_constraintTop_toTopOf="parent"
@@ -72,18 +73,17 @@
 
                 <com.yourssu.design.system.atom.Text
                     android:id="@+id/tv_score"
-                    android:layout_width="wrap_content"
+                    android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="5dp"
-                    android:layout_marginEnd="22dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    android:textColor="@color/textBright"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:typo="subtitle1"
-                    tools:text="100" />
+                    app:text="@{viewModel.currentScore}"
+                    app:typo="subtitle1" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -118,15 +118,13 @@
                     android:layout_marginEnd="2dp"
                     android:gravity="center"
                     android:paddingVertical="4dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/textBright"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tv_play_separator"
                     app:layout_constraintStart_toEndOf="@+id/iv_alarm"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:typo="subtitle1"
-                    tools:text="00" />
+                    app:text="@{viewModel.timerHour}"
+                    app:typo="subtitle1" />
 
                 <com.yourssu.design.system.atom.Text
                     android:id="@+id/tv_play_separator"
@@ -137,15 +135,13 @@
                     android:layout_marginEnd="2dp"
                     android:gravity="center"
                     android:paddingVertical="4dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/textBright"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tv_play_minute"
                     app:layout_constraintStart_toEndOf="@+id/tv_play_hour"
                     app:layout_constraintTop_toTopOf="parent"
                     app:typo="subtitle1"
-                    tools:text="@string/play_timer_separator" />
+                    android:text="@string/play_timer_separator" />
 
                 <com.yourssu.design.system.atom.Text
                     android:id="@+id/tv_play_minute"
@@ -156,15 +152,13 @@
                     android:layout_marginEnd="15dp"
                     android:gravity="center"
                     android:paddingVertical="4dp"
-                    android:textColor="@color/white"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textColor="@color/textBright"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tv_play_separator"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:typo="subtitle1"
-                    tools:text="00" />
+                    app:text="@{viewModel.timerMinute}"
+                    app:typo="subtitle1" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.yourssu.design.system.atom.Text
@@ -173,15 +167,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
-                android:textColor="@color/white"
+                android:textColor="@color/textBright"
                 android:textSize="23sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/et_answer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cl_play_time"
-                app:typo="title1"
-                tools:text="feer" />
+                app:text="@{viewModel.questionWord}"
+                app:typo="title1" />
 
             <com.yourssu.design.system.atom.SimpleTextField
                 android:id="@+id/et_answer"
@@ -194,7 +188,7 @@
                 android:gravity="center"
                 android:inputType="text"
                 android:maxLines="10"
-                android:textColor="@color/white"
+                android:textColor="@color/textPrimary"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toTopOf="@+id/cl_btns"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -217,15 +211,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginHorizontal="30dp"
-                    android:background="@drawable/selector_play_btn"
-                    android:text="@string/all_submit"
-                    android:textColor="@color/white"
                     app:layout_constraintBottom_toTopOf="@+id/btn_skip"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:rounding="@{8}"
+                    app:size="@{BoxButton.Large}"
+                    app:text="@{viewModel.SubmitButtonText}"
+                    app:type="@{BoxButton.FILLED}" />
 
-                <androidx.appcompat.widget.AppCompatButton
+
+                <com.yourssu.design.system.atom.BoxButton
                     android:id="@+id/btn_skip"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
@@ -233,11 +229,14 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="30dp"
                     android:background="@drawable/bg_play_skip_button_purple"
-                    android:text="@string/all_skip"
-                    android:textColor="@color/buttonPoint"                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_submit" />
+                    app:layout_constraintTop_toBottomOf="@+id/btn_submit"
+                    app:rounding="@{8}"
+                    app:size="@{BoxButton.Large}"
+                    app:text="@{viewModel.SkipButtonText}"
+                    app:type="@{BoxButton.LINE}" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

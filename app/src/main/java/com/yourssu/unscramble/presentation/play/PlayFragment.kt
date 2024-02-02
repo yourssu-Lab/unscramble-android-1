@@ -21,6 +21,9 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
         binding.btnSubmit.setOnClickListener {
             // Navigate to TimeFragment
             findNavController().navigate(R.id.endFragment)

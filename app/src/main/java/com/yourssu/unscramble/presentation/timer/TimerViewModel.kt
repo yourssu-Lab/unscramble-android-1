@@ -9,4 +9,7 @@ class TimerViewModel : ViewModel() {
 
     private val _timerMinute: MutableStateFlow<Int> = MutableStateFlow(0)
     val timerMinute: MutableStateFlow<Int> = _timerMinute
+
+    private val _timerButtonText: MutableStateFlow<String> = MutableStateFlow("START")
+    val timerButtonText: MutableStateFlow<String> = _timerButtonText
 }

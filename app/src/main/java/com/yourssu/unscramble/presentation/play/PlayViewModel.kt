@@ -7,15 +7,21 @@ class PlayViewModel : ViewModel() {
     private val _questionWord: MutableStateFlow<String> = MutableStateFlow("")
     val questionWord: MutableStateFlow<String> = _questionWord
 
-    private val _currentScore: MutableStateFlow<Int> = MutableStateFlow(0)
-    val currentScore: MutableStateFlow<Int> = _currentScore
+    private val _currentScore: MutableStateFlow<String> = MutableStateFlow("0")
+    val currentScore: MutableStateFlow<String> = _currentScore
 
-    private val _solvedProblem: MutableStateFlow<Int> = MutableStateFlow(0)
-    val solvedProblem: MutableStateFlow<Int> = _solvedProblem
+    private val _solvedProblem: MutableStateFlow<String> = MutableStateFlow("0")
+    val solvedProblem: MutableStateFlow<String> = _solvedProblem
 
-    private val _timerHour: MutableStateFlow<Int> = MutableStateFlow(0)
-    val timerHour: MutableStateFlow<Int> = _timerHour
+    private val _timerHour: MutableStateFlow<String> = MutableStateFlow("00")
+    val timerHour: MutableStateFlow<String> = _timerHour
 
-    private val _timerMinute: MutableStateFlow<Int> = MutableStateFlow(0)
-    val timerMinute: MutableStateFlow<Int> = _timerMinute
+    private val _timerMinute: MutableStateFlow<String> = MutableStateFlow("00")
+    val timerMinute: MutableStateFlow<String> = _timerMinute
+
+    private val _submitButtonText: MutableStateFlow<String> = MutableStateFlow("SUBMIT")
+    val submitButtonText: MutableStateFlow<String> = _submitButtonText
+
+    private val _skipButtonText: MutableStateFlow<String> = MutableStateFlow("SKIP")
+    val skipButtonText: MutableStateFlow<String> = _skipButtonText
 }
