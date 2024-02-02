@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.yourssu.unscramble.presentation.TimerFragment" />
+            type="com.yourssu.unscramble.presentation.timer.TimerFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        tools:context=".presentation.TimerFragment">
+        tools:context=".presentation.timer.TimerFragment">
 
         <com.yourssu.design.system.atom.Text
             android:id="@+id/tv_timer"
