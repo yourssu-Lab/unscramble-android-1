@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.yourssu.unscramble.presentation.PlayFragment" />
@@ -42,7 +43,22 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:typo="subtitle1"
-                    tools:text="1/10" />
+                    tools:text="0" />
+
+                <com.yourssu.design.system.atom.Text
+                    android:id="@+id/tv_total_problems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginStart="2dp"
+                    android:text="@string/problem_total_problems"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_solved_problems"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:typo="subtitle1" />
 
 
                 <ImageView
@@ -89,17 +105,55 @@
                     android:layout_marginStart="10dp"
                     android:src="@drawable/ic_alarm"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_play_time"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_play_hour"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.yourssu.design.system.atom.Text
-                    android:id="@+id/tv_play_time"
+                    android:id="@+id/tv_play_hour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="8dp"
                     android:layout_marginStart="5dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="2dp"
+                    android:gravity="center"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_play_separator"
+                    app:layout_constraintStart_toEndOf="@+id/iv_alarm"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:typo="subtitle1"
+                    tools:text="00" />
+
+                <com.yourssu.design.system.atom.Text
+                    android:id="@+id/tv_play_separator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="2dp"
+                    android:gravity="center"
+                    android:paddingVertical="4dp"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_play_minute"
+                    app:layout_constraintStart_toEndOf="@+id/tv_play_hour"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:typo="subtitle1"
+                    tools:text="@string/play_timer_separator" />
+
+                <com.yourssu.design.system.atom.Text
+                    android:id="@+id/tv_play_minute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="15dp"
                     android:gravity="center"
                     android:paddingVertical="4dp"
                     android:textColor="@color/white"
@@ -107,10 +161,10 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/iv_alarm"
+                    app:layout_constraintStart_toEndOf="@+id/tv_play_separator"
                     app:layout_constraintTop_toTopOf="parent"
                     app:typo="subtitle1"
-                    tools:text="00:00" />
+                    tools:text="00" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.yourssu.design.system.atom.Text
@@ -134,11 +188,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/bg_play_answer_gray"
                 android:gravity="center"
                 android:inputType="text"
-                android:layout_marginTop="20dp"
                 android:maxLines="10"
                 android:textColor="@color/white"
                 android:textSize="24sp"
