@@ -26,11 +26,14 @@ class EndFragment : BindFragment<FragmentEndBinding>() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.btnHome.setOnClickListener{
-            findNavController().navigate(R.id.startFragment)
-        }
-        binding.btnRetry.setOnClickListener{
-            findNavController().navigate(R.id.timerFragment)
+        binding.run {
+            btnRetry.setOnClickListener {
+                findNavController().navigate(R.id.timerFragment)
+            }
+
+            btnHome.setOnClickListener {
+                findNavController().navigate(R.id.startFragment)
+            }
         }
     }
 }
