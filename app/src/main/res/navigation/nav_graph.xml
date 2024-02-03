@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/playFragment"
-        android:name="com.yourssu.unscramble.presentation.PlayFragment"
+        android:name="com.yourssu.unscramble.presentation.play.PlayFragment"
         android:label="fragment_play"
         tools:layout="@layout/fragment_play" >
         <action
@@ -30,7 +30,7 @@
         tools:layout="@layout/fragment_end" />
     <fragment
         android:id="@+id/timerFragment"
-        android:name="com.yourssu.unscramble.presentation.TimerFragment"
+        android:name="com.yourssu.unscramble.presentation.timer.TimerFragment"
         android:label="fragment_timer"
         tools:layout="@layout/fragment_timer" >
         <action
