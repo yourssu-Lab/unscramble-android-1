@@ -1,4 +1,4 @@
-package com.yourssu.unscramble.presentation.viewmodel
+package com.yourssu.unscramble.presentation
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
