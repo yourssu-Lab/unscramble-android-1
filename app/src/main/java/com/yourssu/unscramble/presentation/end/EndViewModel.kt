@@ -1,9 +1,12 @@
 package com.yourssu.unscramble.presentation.end
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
 
 class EndViewModel : ViewModel() {
-    val result = MutableLiveData("Time out!") //Todo 이 부분은 분기처리해야 함
-    val score = MutableLiveData("70") //Todo 여기도 나중에 처리
+    private val _result: MutableStateFlow<String> = MutableStateFlow("Time out!")
+    val result: MutableStateFlow<String> = _result
+
+    private val _score: MutableStateFlow<Int> = MutableStateFlow(100)
+    val score: MutableStateFlow<Int> = _score
 }
