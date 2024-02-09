@@ -1,8 +1,9 @@
-package com.yourssu.unscramble.presentation
+package com.yourssu.unscramble.presentation.timer
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.yourssu.unscramble.R
 import com.yourssu.unscramble.databinding.FragmentTimerBinding
@@ -11,6 +12,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TimerFragment : BindFragment<FragmentTimerBinding>() {
+    private val viewModel: TimerViewModel by viewModels()
 
     override fun setBinding(layoutInflater: LayoutInflater): FragmentTimerBinding {
         return FragmentTimerBinding.inflate(layoutInflater)
@@ -18,6 +20,9 @@ class TimerFragment : BindFragment<FragmentTimerBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
 
         binding.btnTimer.setOnClickListener {
             // Navigate to TimeFragment
