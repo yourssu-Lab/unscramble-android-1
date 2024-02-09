@@ -5,8 +5,5 @@ import androidx.lifecycle.ViewModel
 
 class EndViewModel : ViewModel() {
     val result = MutableLiveData("Time out!") //Todo 이 부분은 분기처리해야 함
-    val retry = MutableLiveData("Retry")
-    val home = MutableLiveData("Home")
-    val score_title = MutableLiveData("Score: ")
     val score = MutableLiveData("70") //Todo 여기도 나중에 처리
 }
