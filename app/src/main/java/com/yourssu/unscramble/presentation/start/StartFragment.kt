@@ -13,7 +13,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class StartFragment : BindFragment<FragmentStartBinding>() {
 
-    private val viewModel: StartViewModel by viewModels()
     override fun setBinding(layoutInflater: LayoutInflater): FragmentStartBinding {
         return FragmentStartBinding.inflate(layoutInflater)
     }
@@ -21,7 +20,6 @@ class StartFragment : BindFragment<FragmentStartBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
         binding.btnStart.setOnClickListener {
