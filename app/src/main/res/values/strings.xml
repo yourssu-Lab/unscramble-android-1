@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">unscramble</string>
+    <string name="home">Home</string>
+    <string name="score">Score:</string>
+    <string name="retry">Retry</string>
+    <string name="title">UNSCRAMBLE</string>
+    <string name="start">START</string>
     <string name="all_start">start</string>
     <string name="all_set_timer">타이머 설정</string>
     <string name="all_timer_line">:</string>

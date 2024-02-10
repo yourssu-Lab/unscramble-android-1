@@ -53,10 +53,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
-                app:text="@{viewModel.score_title}" />
+                app:text="@{@string/score}"/>
 
             <com.yourssu.design.system.atom.Text
                 android:id="@+id/tv_score2"
@@ -64,9 +61,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView"
                 app:text="@{viewModel.score}" />
         </LinearLayout>
 
@@ -81,7 +75,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:rounding="@{8}"
             app:size="@{BoxButton.Large}"
-            app:text="@{viewModel.retry}"
+            app:text="@{@string/retry}"
             app:type="@{BoxButton.FILLED}" />
 
         <com.yourssu.design.system.atom.BoxButton
@@ -95,7 +89,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:rounding="@{8}"
             app:size="@{BoxButton.Large}"
-            app:text="@{viewModel.home}"
+            app:text="@{@string/home}"
             app:type="@{BoxButton.LINE}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

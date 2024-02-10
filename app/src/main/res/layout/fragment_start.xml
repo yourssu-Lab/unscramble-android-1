@@ -6,9 +6,6 @@
     <data>
         <import type="com.yourssu.design.system.atom.Text" />
         <import type="com.yourssu.design.system.atom.BoxButton"/>
-        <variable
-            name="viewModel"
-            type="com.yourssu.unscramble.presentation.start.StartViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,7 +33,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:text="@{viewModel.title}"/>
+            app:text="@{@string/title}" />
 
 
         <com.yourssu.design.system.atom.BoxButton
@@ -51,9 +48,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:rounding="@{8}"
             app:size="@{BoxButton.Large}"
-            app:text="@{viewModel.btn}"
+            app:text="@{@string/start}"
             app:type="@{BoxButton.FILLED}" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
