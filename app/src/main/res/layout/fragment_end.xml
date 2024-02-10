@@ -48,7 +48,6 @@
 
 
             <com.yourssu.design.system.atom.Text
-                android:id="@+id/tv_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
@@ -56,12 +55,12 @@
                 app:text="@{@string/score}"/>
 
             <com.yourssu.design.system.atom.Text
-                android:id="@+id/tv_score2"
+                android:id="@+id/tv_score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"
-                app:text="@{viewModel.score}" />
+                app:text="@{String.valueOf(viewModel.score)}" />
         </LinearLayout>
 
         <com.yourssu.design.system.atom.BoxButton
