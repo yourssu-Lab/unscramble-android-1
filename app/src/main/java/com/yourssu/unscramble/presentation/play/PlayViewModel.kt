@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
@@ -32,7 +31,7 @@ class PlayViewModel : ViewModel() {
 
     // 입력 답안 유효성 검사
     private val answerIsValid =
-        _inputAnswer.map { (it.isNotEmpty() && REGEX.matcher(it).find())}
+        _inputAnswer.map { (it.isNotBlank() && REGEX.matcher(it).find()) }
 
     // textField
     private val _textFieldIsNegative: MutableStateFlow<Boolean> = MutableStateFlow(false)
@@ -50,7 +49,6 @@ class PlayViewModel : ViewModel() {
             }
         }
     }
-
 
     companion object {
         private const val PATTERN = "^(?=.*[A-Za-z])[A-Za-z]{0,10}$"
