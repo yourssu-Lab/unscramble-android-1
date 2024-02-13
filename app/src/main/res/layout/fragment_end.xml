@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:textColor="@color/white"
-                app:text="@{viewModel.score}" />
+                app:text="@{viewModel.score.toString()}" />
         </LinearLayout>
 
         <com.yourssu.design.system.atom.BoxButton
