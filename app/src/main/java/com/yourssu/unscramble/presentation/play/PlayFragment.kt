@@ -28,5 +28,6 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
             // Navigate to TimeFragment
             findNavController().navigate(R.id.endFragment)
         }
+        viewModel.checkValid()
     }
 }
