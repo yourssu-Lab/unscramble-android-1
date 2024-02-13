@@ -217,6 +217,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:rounding="@{8}"
+                    app:isDisabled="@{viewModel.submitBtnIsDisable}"
                     app:size="@{BoxButton.Large}"
                     app:text="@{@string/all_submit}"
                     app:type="@{BoxButton.FILLED}" />
@@ -229,7 +230,6 @@
                     android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="30dp"
-                    app:isDisabled="@{viewModel.submitBtnIsDisable}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

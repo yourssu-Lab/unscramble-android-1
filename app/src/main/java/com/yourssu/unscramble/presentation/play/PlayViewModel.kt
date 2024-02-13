@@ -29,20 +29,17 @@ class PlayViewModel : ViewModel() {
     // 유효성 판단에 따른 버튼 활성화 관련 코드
     // 사용자가 입력한 답안
     private val _inputAnswer: MutableStateFlow<String> = MutableStateFlow("")
-    val inputAnswer: StateFlow<String> = _inputAnswer.asStateFlow()
 
     // 입력 답안 유효성 검사
-    val answerIsValid =
-        _inputAnswer.map { inputAnswer ->
-            REGEX.matcher(inputAnswer).matches()
-        }
+    private val answerIsValid =
+        _inputAnswer.map { (it.isNotEmpty() && REGEX.matcher(it).find())}
 
     // textField
     private val _textFieldIsNegative: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val textFieldIsNegative: StateFlow<Boolean> = _textFieldIsNegative.asStateFlow()
 
     // submit 버튼 활성화
-    private val _submitBtnIsDisable: MutableStateFlow<Boolean> = MutableStateFlow(true)
+    private val _submitBtnIsDisable: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val submitBtnIsDisable: StateFlow<Boolean> = _submitBtnIsDisable.asStateFlow()
 
     fun checkValid() {
