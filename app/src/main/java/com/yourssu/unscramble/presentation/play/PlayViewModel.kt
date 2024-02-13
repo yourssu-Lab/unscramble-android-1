@@ -18,10 +18,4 @@ class PlayViewModel : ViewModel() {
 
     private val _timerMinute: MutableStateFlow<String> = MutableStateFlow("00")
     val timerMinute: MutableStateFlow<String> = _timerMinute
-
-    private val _submitButtonText: MutableStateFlow<String> = MutableStateFlow("SUBMIT")
-    val submitButtonText: MutableStateFlow<String> = _submitButtonText
-
-    private val _skipButtonText: MutableStateFlow<String> = MutableStateFlow("SKIP")
-    val skipButtonText: MutableStateFlow<String> = _skipButtonText
 }

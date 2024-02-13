@@ -10,8 +10,8 @@
     <string name="all_timer_line">:</string>
     <string name="et_hint_hour">10</string>
     <string name="et_hint_minute">00</string>
-    <string name="all_skip">Skip</string>
-    <string name="all_submit">Submit</string>
+    <string name="all_skip">SKIP</string>
+    <string name="all_submit">SUBMIT</string>
     <string name="problem_total_problems">/10</string>
     <string name="play_timer_separator">:</string>
 </resources>
