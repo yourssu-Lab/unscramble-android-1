@@ -44,7 +44,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:text="@{viewModel.solvedProblem}"
+                    app:text="@{viewModel.solvedProblem.toString()}"
                     app:typo="subtitle1"
                     tools:text="0" />
 
@@ -82,7 +82,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:text="@{viewModel.currentScore}"
+                    app:text="@{viewModel.currentScore.toString()}"
                     app:typo="subtitle1" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,11 +13,11 @@ class PlayViewModel : ViewModel() {
     private val _questionWord: MutableStateFlow<String> = MutableStateFlow("")
     val questionWord: StateFlow<String> = _questionWord.asStateFlow()
 
-    private val _currentScore: MutableStateFlow<String> = MutableStateFlow("0")
-    val currentScore: StateFlow<String> = _currentScore.asStateFlow()
+    private val _currentScore: MutableStateFlow<Int> = MutableStateFlow(0)
+    val currentScore: StateFlow<Int> = _currentScore.asStateFlow()
 
-    private val _solvedProblem: MutableStateFlow<String> = MutableStateFlow("0")
-    val solvedProblem: StateFlow<String> = _solvedProblem.asStateFlow()
+    private val _solvedProblem: MutableStateFlow<Int> = MutableStateFlow(1)
+    val solvedProblem: StateFlow<Int> = _solvedProblem.asStateFlow()
 
     private val _timerHour: MutableStateFlow<String> = MutableStateFlow("00")
     val timerHour: StateFlow<String> = _timerHour.asStateFlow()
@@ -56,6 +56,10 @@ class PlayViewModel : ViewModel() {
         _inputAnswer.value = answer
     }
 
+    fun nextProblem() {
+        _solvedProblem.value = (solvedProblem.value + 1)
+        _inputAnswer.value = ""
+    }
     companion object {
         private const val PATTERN = "^(?=.*[A-Za-z])[A-Za-z]{0,10}$"
         val REGEX: Pattern = Pattern.compile(PATTERN)

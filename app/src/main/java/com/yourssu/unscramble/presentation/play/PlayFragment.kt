@@ -34,7 +34,13 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
     private fun navigateView() {
         binding.run {
             btnSubmit.setOnClickListener {
-                findNavController().navigate(R.id.endFragment)
+                if (viewModel!!.solvedProblem.value == 9) {
+                    findNavController().navigate(R.id.endFragment)
+                } else {
+                    binding.etAnswer.text.clear()
+                    viewModel!!.nextProblem()
+                    viewModel!!.checkValid()
+                }
             }
             btnSkip.setOnClickListener {
                 findNavController().navigate(R.id.endFragment)
