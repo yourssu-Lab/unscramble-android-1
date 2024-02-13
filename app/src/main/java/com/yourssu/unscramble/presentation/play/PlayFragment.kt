@@ -1,6 +1,8 @@
 package com.yourssu.unscramble.presentation.play
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -24,10 +26,33 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.btnSubmit.setOnClickListener {
-            // Navigate to TimeFragment
-            findNavController().navigate(R.id.endFragment)
-        }
+        navigateView()
         viewModel.checkValid()
+        listenTextFieldChanged()
+    }
+
+    private fun navigateView() {
+        binding.run {
+            btnSubmit.setOnClickListener {
+                findNavController().navigate(R.id.endFragment)
+            }
+            btnSkip.setOnClickListener {
+                findNavController().navigate(R.id.endFragment)
+            }
+        }
+    }
+
+    private fun listenTextFieldChanged() {
+        binding.etAnswer.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                viewModel.setInputAnswer(s.toString())
+            }
+        })
     }
 }

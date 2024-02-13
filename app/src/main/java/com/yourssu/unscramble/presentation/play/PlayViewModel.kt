@@ -31,7 +31,9 @@ class PlayViewModel : ViewModel() {
 
     // 입력 답안 유효성 검사
     private val answerIsValid =
-        _inputAnswer.map { (it.isNotBlank() && REGEX.matcher(it).find()) }
+        _inputAnswer.map { input ->
+            input.isNotBlank() && REGEX.matcher(input).matches()
+        }
 
     // textField
     private val _textFieldIsNegative: MutableStateFlow<Boolean> = MutableStateFlow(false)
@@ -48,6 +50,10 @@ class PlayViewModel : ViewModel() {
                 _submitBtnIsDisable.value = !result
             }
         }
+    }
+
+    fun setInputAnswer(answer: String) {
+        _inputAnswer.value = answer
     }
 
     companion object {
