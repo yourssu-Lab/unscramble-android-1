@@ -189,10 +189,12 @@
                 android:maxLines="10"
                 android:textColor="@color/textPrimary"
                 android:textSize="24sp"
+                app:helperLabelText="@{@string/play_answer_hint}"
                 app:layout_constraintBottom_toTopOf="@+id/cl_btns"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_problem" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_problem"
+                />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cl_btns"
@@ -217,7 +219,8 @@
                     app:rounding="@{8}"
                     app:size="@{BoxButton.Large}"
                     app:text="@{@string/all_submit}"
-                    app:type="@{BoxButton.FILLED}" />
+                    app:type="@{BoxButton.FILLED}"
+                    />
 
 
                 <com.yourssu.design.system.atom.BoxButton
