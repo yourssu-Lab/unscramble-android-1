@@ -34,23 +34,21 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
     private fun navigateView() {
         binding.run {
             btnSubmit.setOnClickListener {
-                if (viewModel?.solvedProblem?.value == 9) {
-                    findNavController().navigate(R.id.endFragment)
-                } else {
-                    binding.etAnswer.text.clear()
-                    viewModel?.nextProblem()
-                    viewModel?.checkValid()
-                }
+                handlePlayButtonClick()
             }
             btnSkip.setOnClickListener {
-                if (viewModel?.solvedProblem?.value == 9) {
-                    findNavController().navigate(R.id.endFragment)
-                } else {
-                    binding.etAnswer.text.clear()
-                    viewModel?.nextProblem()
-                    viewModel?.checkValid()
-                }
+                handlePlayButtonClick()
             }
+        }
+    }
+
+    private fun handlePlayButtonClick() {
+        if (viewModel.solvedProblem.value == 9) {
+            findNavController().navigate(R.id.endFragment)
+        } else {
+            binding.etAnswer.text.clear()
+            viewModel.nextProblem()
+            viewModel.checkValid()
         }
     }
 
