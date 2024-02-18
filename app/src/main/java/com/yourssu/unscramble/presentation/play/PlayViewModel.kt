@@ -55,7 +55,7 @@ class PlayViewModel : ViewModel() {
                 _navigateToEnd.emit(true)
             }
         } else {
-            nextProblem()
+            updatePlayView()
             checkValid()
         }
     }
@@ -73,7 +73,7 @@ class PlayViewModel : ViewModel() {
         _inputAnswer.value = answer
     }
 
-    private fun nextProblem() {
+    private fun updatePlayView() {
         _solvedProblem.value = (solvedProblem.value + 1)
         _inputAnswer.value = ""
     }
