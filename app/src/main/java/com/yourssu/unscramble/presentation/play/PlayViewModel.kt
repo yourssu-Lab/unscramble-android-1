@@ -43,6 +43,19 @@ class PlayViewModel : ViewModel() {
     private val _submitBtnIsDisable: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val submitBtnIsDisable: StateFlow<Boolean> = _submitBtnIsDisable.asStateFlow()
 
+    private val _navigateToEnd: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    val navigateToEnd: StateFlow<Boolean> = _submitBtnIsDisable.asStateFlow()
+
+    fun onPlayButtonClick() {
+        if (solvedProblem.value == 9) {
+            _navigateToEnd.value = true
+        } else {
+            _inputAnswer.value = ""
+            nextProblem()
+            checkValid()
+        }
+    }
+
     fun checkValid() {
         viewModelScope.launch {
             answerIsValid.collect { result ->

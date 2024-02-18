@@ -26,43 +26,40 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        navigateView()
         viewModel.checkValid()
-        listenTextFieldChanged()
+        setupListeners()
     }
 
-    private fun navigateView() {
+    private fun setupListeners() {
         binding.run {
             btnSubmit.setOnClickListener {
-                handlePlayButtonClick()
+                viewModel?.onPlayButtonClick()
+                if (viewModel?.navigateToEnd?.value == true) {
+                    findNavController().navigate(R.id.endFragment)
+                }
             }
             btnSkip.setOnClickListener {
-                handlePlayButtonClick()
+                viewModel?.onPlayButtonClick()
+                if (viewModel?.navigateToEnd?.value == true) {
+                    findNavController().navigate(R.id.endFragment)
+                }
             }
+            etAnswer.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int,
+                ) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    viewModel?.setInputAnswer(s.toString())
+                }
+            })
         }
-    }
-
-    private fun handlePlayButtonClick() {
-        if (viewModel.solvedProblem.value == 9) {
-            findNavController().navigate(R.id.endFragment)
-        } else {
-            binding.etAnswer.text.clear()
-            viewModel.nextProblem()
-            viewModel.checkValid()
-        }
-    }
-
-    private fun listenTextFieldChanged() {
-        binding.etAnswer.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                viewModel.setInputAnswer(s.toString())
-            }
-        })
     }
 }
