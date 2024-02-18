@@ -2,8 +2,11 @@ package com.yourssu.unscramble.presentation.play
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -43,14 +46,15 @@ class PlayViewModel : ViewModel() {
     private val _submitBtnIsDisable: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val submitBtnIsDisable: StateFlow<Boolean> = _submitBtnIsDisable.asStateFlow()
 
-    private val _navigateToEnd: MutableStateFlow<Boolean> = MutableStateFlow(false)
-    val navigateToEnd: StateFlow<Boolean> = _submitBtnIsDisable.asStateFlow()
+    private val _navigateToEnd: MutableSharedFlow<Boolean> = MutableSharedFlow()
+    val navigateToEnd: SharedFlow<Boolean> = _navigateToEnd.asSharedFlow()
 
     fun onPlayButtonClick() {
-        if (solvedProblem.value == 9) {
-            _navigateToEnd.value = true
+        if (_solvedProblem.value == 9) {
+            viewModelScope.launch {
+                _navigateToEnd.emit(true)
+            }
         } else {
-            _inputAnswer.value = ""
             nextProblem()
             checkValid()
         }
@@ -69,10 +73,11 @@ class PlayViewModel : ViewModel() {
         _inputAnswer.value = answer
     }
 
-    fun nextProblem() {
+    private fun nextProblem() {
         _solvedProblem.value = (solvedProblem.value + 1)
         _inputAnswer.value = ""
     }
+
     companion object {
         private const val PATTERN = "^(?=.*[A-Za-z])[A-Za-z]{0,10}$"
         val REGEX: Pattern = Pattern.compile(PATTERN)
