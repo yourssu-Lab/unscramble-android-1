@@ -14,10 +14,10 @@ import javax.inject.Inject
 @ViewModelScoped
 class MainViewModel @Inject constructor() : ViewModel() {
 
-    private var _isEnd: MutableStateFlow<Boolean> = MutableStateFlow(false)
+    private val _isEnd: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val isEnd: StateFlow<Boolean> = _isEnd
 
-    private var _time: MutableStateFlow<Int> = MutableStateFlow(0)
+    private val _time: MutableStateFlow<Int> = MutableStateFlow(0)
     val time: StateFlow<Int> = _time
 
     fun updateTime(time: Int) {
