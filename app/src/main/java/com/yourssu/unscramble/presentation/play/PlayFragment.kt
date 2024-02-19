@@ -1,7 +1,6 @@
 package com.yourssu.unscramble.presentation.play
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -35,17 +34,11 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
             findNavController().navigate(R.id.endFragment)
         }
 
-        Log.d("PlayFragment", mainViewModel.isEnd.value.toString())
-
-
-
         mainViewModel.startTimer(mainViewModel.time.value)
-
 
         viewLifecycleOwner.lifecycleScope.launch {
             mainViewModel.isEnd
                 .collectLatest { isEnd ->
-                    Log.d("PlayFragment", isEnd.toString())
                     if (isEnd) {
                         findNavController().navigate(R.id.endFragment)
                     }
