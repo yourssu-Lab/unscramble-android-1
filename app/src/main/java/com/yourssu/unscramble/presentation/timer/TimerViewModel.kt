@@ -24,7 +24,7 @@ class TimerViewModel : ViewModel() {
         _timerSecond.value = s.toString().toInt()
     }
 
-    fun getTime(): Int {
+    fun getTotalTime(): Int {
         return timerMinute.value * 60 + timerSecond.value
     }
 }

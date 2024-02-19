@@ -30,7 +30,7 @@ class TimerFragment : BindFragment<FragmentTimerBinding>() {
         binding.btnTimer.setOnClickListener {
             findNavController().navigate(R.id.playFragment)
 
-            val currentStepValue = viewModel.getTime() //Fragment의 Value
+            val currentStepValue = viewModel.getTotalTime() //Fragment의 Value
             mainViewModel.updateTime(currentStepValue) //Activity ViewModel에 Value Update
 
         }

@@ -20,8 +20,8 @@ class MainViewModel @Inject constructor() : ViewModel() {
     private var _time: MutableStateFlow<Int> = MutableStateFlow(0)
     val time: StateFlow<Int> = _time
 
-    fun updateTime(currentStepValue: Int) {
-        _time.value = currentStepValue
+    fun updateTime(time: Int) {
+        _time.value = time
     }
 
     fun updateIsEnd() {
@@ -39,18 +39,18 @@ class MainViewModel @Inject constructor() : ViewModel() {
                 mHandler.postDelayed({
                     // 반복실행할 구문
                     cnt--
-                    Log.d("TimerFragment", "$cnt")
+                    Log.d("MainViewModel", "$cnt")
                     if (cnt <= 0) {
                         mTimer.cancel()
-                        Log.d("TimerFragment", "타이머 종료")
+                        Log.d("MainViewModel", "타이머 종료")
                         _isEnd.value = true
-                        Log.d("TimerFragment", isEnd.value.toString())
+                        Log.d("MainViewModel", isEnd.value.toString())
 
                     }
                 }, 0)
             }
         }
         mTimer.schedule(mTimerTask, 0, 1000)
-        Log.d("TimerFragment", "${cnt}초 타이머 시작")
+        Log.d("MainViewModel", "${cnt}초 타이머 시작")
     }
 }
