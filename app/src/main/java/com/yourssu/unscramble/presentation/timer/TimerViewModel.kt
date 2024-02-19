@@ -13,9 +13,6 @@ class TimerViewModel : ViewModel() {
     private val _timerSecond: MutableStateFlow<Int> = MutableStateFlow(0)
     val timerSecond: StateFlow<Int> = _timerSecond
 
-    private val _timerButtonText: MutableStateFlow<String> = MutableStateFlow("START")
-    val timerButtonText: StateFlow<String> = _timerButtonText
-
     fun updateMinute(s: Editable) {
         _timerMinute.value = s.toString().toInt()
     }
