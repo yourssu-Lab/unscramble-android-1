@@ -28,8 +28,8 @@ class MainViewModel @Inject constructor() : ViewModel() {
         _isEnd.value = false
     }
 
-    fun startTimer(time: Int) {
-        var cnt = time
+    fun startTimer() {
+        var cnt = _time.value
 
         val mTimer = Timer()
         // 반복적으로 사용할 TimerTask

@@ -34,7 +34,7 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
             findNavController().navigate(R.id.endFragment)
         }
 
-        mainViewModel.startTimer(mainViewModel.time.value)
+        mainViewModel.startTimer()
 
         viewLifecycleOwner.lifecycleScope.launch {
             mainViewModel.isEnd
