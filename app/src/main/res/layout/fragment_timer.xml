@@ -86,7 +86,7 @@
             android:layout_margin="20dp"
             app:rounding="@{8}"
             app:size="@{BoxButton.Large}"
-            app:text="@{viewModel.timerButtonText}"
+            app:text="@{@string/start}"
             app:type="@{BoxButton.FILLED}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
