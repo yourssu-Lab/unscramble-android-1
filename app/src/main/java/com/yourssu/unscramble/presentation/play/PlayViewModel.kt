@@ -63,6 +63,9 @@ class PlayViewModel @Inject constructor(
     val originalFruitWord: StateFlow<String> = _originalFruitWord.asStateFlow()
 
     init {
+        getQuestion()
+    }
+    fun getQuestion() {
         viewModelScope.launch {
             val fruit = fruitRepository.getRandomQuestionFruitName()
             _questionScrambledFruitWord.value = fruit.scrambledFruitName
@@ -101,6 +104,7 @@ class PlayViewModel @Inject constructor(
     private fun updatePlayView() {
         _solvedProblem.update { it + 1 }
         _inputAnswer.value = ""
+        getQuestion()
     }
 
     companion object {
