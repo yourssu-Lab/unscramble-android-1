@@ -110,7 +110,7 @@ class PlayViewModel @Inject constructor(
         viewModelScope.launch {
             val result = fruitRepository.checkAnswer(_inputAnswer.value, _originalFruitWord.value)
             if (result) {
-                _currentScore.update { (it + 1) * 10 }
+                _currentScore.update { (it + 10) }
             }
         }
     }
