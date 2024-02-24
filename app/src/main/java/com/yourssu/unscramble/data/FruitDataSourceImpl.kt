@@ -17,7 +17,7 @@ class FruitDataSourceImpl : FruitDataSource {
     }
 
     // 정답 확인
-    override suspend fun checkAnswer(userAnswer: String, fruit: Fruit): Boolean {
-        return userAnswer == fruit.originalFruitName
+    override suspend fun checkAnswer(userAnswer: String, answer: String): Boolean {
+        return userAnswer == answer
     }
 }

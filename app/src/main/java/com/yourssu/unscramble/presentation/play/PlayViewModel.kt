@@ -1,6 +1,7 @@
 package com.yourssu.unscramble.presentation.play
 
 import android.text.Editable
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yourssu.unscramble.repository.FruitRepository
@@ -65,7 +66,7 @@ class PlayViewModel @Inject constructor(
     init {
         getQuestion()
     }
-    fun getQuestion() {
+    private fun getQuestion() {
         viewModelScope.launch {
             val fruit = fruitRepository.getRandomQuestionFruitName()
             _questionScrambledFruitWord.value = fruit.scrambledFruitName
@@ -79,12 +80,14 @@ class PlayViewModel @Inject constructor(
 
     fun onPlayButtonClick() {
         if (_solvedProblem.value == 9) {
+            checkUserAnswer()
             viewModelScope.launch {
                 _navigateToEnd.emit(true)
             }
         } else {
-            updatePlayView()
             checkValid()
+            checkUserAnswer()
+            updatePlayView()
         }
     }
 
@@ -97,14 +100,19 @@ class PlayViewModel @Inject constructor(
         }
     }
 
-    fun setInputAnswer(answer: String) {
-        _inputAnswer.value = answer
-    }
-
     private fun updatePlayView() {
         _solvedProblem.update { it + 1 }
         _inputAnswer.value = ""
         getQuestion()
+    }
+
+    private fun checkUserAnswer() {
+        viewModelScope.launch {
+            val result = fruitRepository.checkAnswer(_inputAnswer.value, _originalFruitWord.value)
+            if (result) {
+                _currentScore.update { (it + 1) * 10 }
+            }
+        }
     }
 
     companion object {

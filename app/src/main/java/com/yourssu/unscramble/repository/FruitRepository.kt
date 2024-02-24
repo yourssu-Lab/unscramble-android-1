@@ -7,6 +7,6 @@ interface FruitRepository {
     suspend fun scrambleLetters(word: String): String
     suspend fun checkAnswer(
         userAnswer: String,
-        fruit: Fruit,
+        answer: String,
     ): Boolean
 }

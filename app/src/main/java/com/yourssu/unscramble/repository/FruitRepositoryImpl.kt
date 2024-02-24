@@ -13,7 +13,7 @@ class FruitRepositoryImpl(private val fruitDataSource: FruitDataSource) : FruitR
         return fruitDataSource.getRandomQuestionFruitName()
     }
 
-    override suspend fun checkAnswer(userAnswer: String, fruit: Fruit): Boolean {
-        return fruitDataSource.checkAnswer(userAnswer, fruit)
+    override suspend fun checkAnswer(userAnswer: String, answer: String): Boolean {
+        return fruitDataSource.checkAnswer(userAnswer, answer)
     }
 }

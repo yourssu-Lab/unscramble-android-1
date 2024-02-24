@@ -6,6 +6,6 @@ interface FruitDataSource {
 
     suspend fun checkAnswer(
         userAnswer: String,
-        fruit: Fruit,
+        answer: String,
     ): Boolean
 }
