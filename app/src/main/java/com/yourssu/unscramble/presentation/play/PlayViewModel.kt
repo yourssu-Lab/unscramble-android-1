@@ -3,6 +3,8 @@ package com.yourssu.unscramble.presentation.play
 import android.text.Editable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yourssu.unscramble.repository.FruitRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -13,10 +15,12 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
+import javax.inject.Inject
 
-class PlayViewModel : ViewModel() {
-    private val _questionWord: MutableStateFlow<String> = MutableStateFlow("")
-    val questionWord: StateFlow<String> = _questionWord.asStateFlow()
+@HiltViewModel
+class PlayViewModel @Inject constructor(
+    private val fruitRepository: FruitRepository,
+) : ViewModel() {
 
     private val _currentScore: MutableStateFlow<Int> = MutableStateFlow(0)
     val currentScore: StateFlow<Int> = _currentScore.asStateFlow()
@@ -50,6 +54,21 @@ class PlayViewModel : ViewModel() {
 
     private val _navigateToEnd: MutableSharedFlow<Boolean> = MutableSharedFlow()
     val navigateToEnd: SharedFlow<Boolean> = _navigateToEnd.asSharedFlow()
+
+    // 문제
+    private val _questionScrambledFruitWord: MutableStateFlow<String> = MutableStateFlow("")
+    val questionScrambledFruitWord: StateFlow<String> = _questionScrambledFruitWord.asStateFlow()
+
+    private val _originalFruitWord: MutableStateFlow<String> = MutableStateFlow("")
+    val originalFruitWord: StateFlow<String> = _originalFruitWord.asStateFlow()
+
+    init {
+        viewModelScope.launch {
+            val fruit = fruitRepository.getRandomQuestionFruitName()
+            _questionScrambledFruitWord.value = fruit.scrambledFruitName
+            _originalFruitWord.value = fruit.originalFruitName
+        }
+    }
 
     fun answerChangedListner(s: Editable) {
         _inputAnswer.value = s.toString()

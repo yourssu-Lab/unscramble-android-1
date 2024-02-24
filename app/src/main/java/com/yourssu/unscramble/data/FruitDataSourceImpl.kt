@@ -11,9 +11,9 @@ class FruitDataSourceImpl : FruitDataSource {
 
     // 최종 문제 제시, 확인을 위한
     override suspend fun getRandomQuestionFruitName(): Fruit {
-        val randomFruitName = FruitNames.NAMES.random()
-        val jumbledName = scrambleLetters(randomFruitName)
-        return Fruit(randomFruitName, jumbledName)
+        val originalFruitName = FruitNames.NAMES.random()
+        val scrambledName = scrambleLetters(originalFruitName)
+        return Fruit(originalFruitName, scrambledName)
     }
 
     // 정답 확인
