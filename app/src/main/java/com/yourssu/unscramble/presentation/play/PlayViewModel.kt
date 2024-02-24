@@ -1,7 +1,6 @@
 package com.yourssu.unscramble.presentation.play
 
 import android.text.Editable
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yourssu.unscramble.repository.FruitRepository
@@ -66,6 +65,7 @@ class PlayViewModel @Inject constructor(
     init {
         getQuestion()
     }
+
     private fun getQuestion() {
         viewModelScope.launch {
             val fruit = fruitRepository.getRandomQuestionFruitName()
