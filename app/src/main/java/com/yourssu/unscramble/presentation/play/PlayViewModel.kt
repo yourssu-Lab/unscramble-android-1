@@ -1,5 +1,6 @@
 package com.yourssu.unscramble.presentation.play
 
+import android.text.Editable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -9,6 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
@@ -49,6 +51,10 @@ class PlayViewModel : ViewModel() {
     private val _navigateToEnd: MutableSharedFlow<Boolean> = MutableSharedFlow()
     val navigateToEnd: SharedFlow<Boolean> = _navigateToEnd.asSharedFlow()
 
+    fun answerChangedListner(s: Editable) {
+        _inputAnswer.value = s.toString()
+    }
+
     fun onPlayButtonClick() {
         if (_solvedProblem.value == 9) {
             viewModelScope.launch {
@@ -74,7 +80,7 @@ class PlayViewModel : ViewModel() {
     }
 
     private fun updatePlayView() {
-        _solvedProblem.value = (solvedProblem.value + 1)
+        _solvedProblem.update { it + 1 }
         _inputAnswer.value = ""
     }
 

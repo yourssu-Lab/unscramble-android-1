@@ -1,8 +1,6 @@
 package com.yourssu.unscramble.presentation.play
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -28,48 +26,40 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        observeViewModel()
         viewModel.checkValid()
+        observeNavigationToEnd()
         setupListeners()
+    }
+
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            viewModel.navigateToEnd.collect { navigateToEnd ->
+                if (navigateToEnd) {
+                    findNavController().navigate(R.id.endFragment)
+                }
+            }
+        }
+    }
+
+    private fun observeNavigationToEnd() {
+        lifecycleScope.launch {
+            viewModel.navigateToEnd.collect { navigateToEnd ->
+                if (navigateToEnd) {
+                    findNavController().navigate(R.id.endFragment)
+                }
+            }
+        }
     }
 
     private fun setupListeners() {
         binding.btnSubmit.setOnClickListener {
             viewModel.onPlayButtonClick()
-            lifecycleScope.launch {
-                viewModel.navigateToEnd.collect { navigateToEnd ->
-                    if (navigateToEnd) {
-                        findNavController().navigate(R.id.endFragment)
-                    }
-                }
-            }
             binding.etAnswer.text.clear()
         }
         binding.btnSkip.setOnClickListener {
             viewModel.onPlayButtonClick()
-            lifecycleScope.launch {
-                viewModel.navigateToEnd.collect { navigateToEnd ->
-                    if (navigateToEnd) {
-                        findNavController().navigate(R.id.endFragment)
-                    }
-                }
-            }
             binding.etAnswer.text.clear()
         }
-        binding.etAnswer.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(
-                s: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int,
-            ) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                viewModel.setInputAnswer(s.toString())
-            }
-        })
     }
 }
