@@ -18,6 +18,6 @@ class FruitDataSourceImpl : FruitDataSource {
 
     // 정답 확인
     override suspend fun checkAnswer(userAnswer: String, answer: String): Boolean {
-        return userAnswer == answer
+        return userAnswer.uppercase() == answer
     }
 }
