@@ -119,4 +119,6 @@ class PlayViewModel @Inject constructor(
         private const val PATTERN = "^(?=.*[A-Za-z])[A-Za-z]{0,10}$"
         val REGEX: Pattern = Pattern.compile(PATTERN)
     }
+
+    // TODO : Fruit 네이밍 수정, 함수 및 변수 네이밍 수정, SKIP 시에는 정답이어도 점수 반영 X
 }
