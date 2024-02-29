@@ -3,6 +3,8 @@ package com.yourssu.unscramble.presentation.play
 import android.text.Editable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.yourssu.unscramble.repository.QuizRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -13,10 +15,12 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.util.regex.Pattern
+import javax.inject.Inject
 
-class PlayViewModel : ViewModel() {
-    private val _questionWord: MutableStateFlow<String> = MutableStateFlow("")
-    val questionWord: StateFlow<String> = _questionWord.asStateFlow()
+@HiltViewModel
+class PlayViewModel @Inject constructor(
+    private val quizRepository: QuizRepository,
+) : ViewModel() {
 
     private val _currentScore: MutableStateFlow<Int> = MutableStateFlow(0)
     val currentScore: StateFlow<Int> = _currentScore.asStateFlow()
@@ -51,18 +55,38 @@ class PlayViewModel : ViewModel() {
     private val _navigateToEnd: MutableSharedFlow<Boolean> = MutableSharedFlow()
     val navigateToEnd: SharedFlow<Boolean> = _navigateToEnd.asSharedFlow()
 
+    // 문제
+    private val _questionScrambledFruitWord: MutableStateFlow<String> = MutableStateFlow("")
+    val questionScrambledFruitWord: StateFlow<String> = _questionScrambledFruitWord.asStateFlow()
+
+    private val _originalQuizWord: MutableStateFlow<String> = MutableStateFlow("")
+
+    init {
+        getQuizWord()
+    }
+
+    private fun getQuizWord() {
+        viewModelScope.launch {
+            val quizWord = quizRepository.getRandomQuizWord()
+            _questionScrambledFruitWord.value = quizWord.scrambledQuizWord
+            _originalQuizWord.value = quizWord.originalQuizWord
+        }
+    }
+
     fun answerChangedListner(s: Editable) {
         _inputAnswer.value = s.toString()
     }
 
     fun onPlayButtonClick() {
         if (_solvedProblem.value == 9) {
+            checkUserAnswer()
             viewModelScope.launch {
                 _navigateToEnd.emit(true)
             }
         } else {
-            updatePlayView()
             checkValid()
+            checkUserAnswer()
+            updatePlayView()
         }
     }
 
@@ -75,17 +99,24 @@ class PlayViewModel : ViewModel() {
         }
     }
 
-    fun setInputAnswer(answer: String) {
-        _inputAnswer.value = answer
-    }
-
     private fun updatePlayView() {
         _solvedProblem.update { it + 1 }
         _inputAnswer.value = ""
+        getQuizWord()
+    }
+
+    private fun checkUserAnswer() {
+        viewModelScope.launch {
+            if (_inputAnswer.value.uppercase() == _originalQuizWord.value.uppercase()) {
+                _currentScore.update { it + 10 }
+            }
+        }
     }
 
     companion object {
         private const val PATTERN = "^(?=.*[A-Za-z])[A-Za-z]{0,10}$"
         val REGEX: Pattern = Pattern.compile(PATTERN)
     }
+
+    // TODO : Fruit 네이밍 수정, 함수 및 변수 네이밍 수정, SKIP 시에는 정답이어도 점수 반영 X
 }
