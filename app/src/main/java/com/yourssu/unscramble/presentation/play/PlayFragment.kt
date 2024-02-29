@@ -30,8 +30,40 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+        observeViewModel()
+        viewModel.checkValid()
+        observeNavigationToEnd()
+        setupListeners()
+    }
+
+    private fun observeViewModel() {
+        lifecycleScope.launch {
+            viewModel.navigateToEnd.collect { navigateToEnd ->
+                if (navigateToEnd) {
+                    findNavController().navigate(R.id.endFragment)
+                }
+            }
+        }
+    }
+
+    private fun observeNavigationToEnd() {
+        lifecycleScope.launch {
+            viewModel.navigateToEnd.collect { navigateToEnd ->
+                if (navigateToEnd) {
+                    findNavController().navigate(R.id.endFragment)
+                }
+            }
+        }
+    }
+
+    private fun setupListeners() {
         binding.btnSubmit.setOnClickListener {
-            findNavController().navigate(R.id.endFragment)
+            viewModel.onPlayButtonClick()
+            binding.etAnswer.text.clear()
+        }
+        binding.btnSkip.setOnClickListener {
+            viewModel.onPlayButtonClick()
+            binding.etAnswer.text.clear()
         }
 
         mainViewModel.startTimer()
