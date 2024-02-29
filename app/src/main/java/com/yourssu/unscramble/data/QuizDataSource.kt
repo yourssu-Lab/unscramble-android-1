@@ -1,7 +1,7 @@
 package com.yourssu.unscramble.data
 
-interface FruitDataSource {
-    suspend fun getRandomQuestionFruitName(): Fruit
+interface QuizDataSource {
+    suspend fun getRandomQuizWord(): QuizSet
     suspend fun scrambleLetters(word: String): String
 
     suspend fun checkAnswer(

@@ -1,9 +1,9 @@
 package com.yourssu.unscramble.repository
 
-import com.yourssu.unscramble.data.Fruit
+import com.yourssu.unscramble.data.QuizSet
 
-interface FruitRepository {
-    suspend fun getRandomQuestionFruitName(): Fruit
+interface QuizRepository {
+    suspend fun getRandomQuizWord(): QuizSet
     suspend fun scrambleLetters(word: String): String
     suspend fun checkAnswer(
         userAnswer: String,

@@ -1,6 +1,6 @@
 package com.yourssu.unscramble.data
 
-class FruitDataSourceImpl : FruitDataSource {
+class QuizDataSourceImpl : QuizDataSource {
 
     // 문제로 제시할 과일 이름 철자 섞기
     override suspend fun scrambleLetters(word: String): String {
@@ -10,10 +10,10 @@ class FruitDataSourceImpl : FruitDataSource {
     }
 
     // 최종 문제 제시, 확인을 위한
-    override suspend fun getRandomQuestionFruitName(): Fruit {
-        val originalFruitName = FruitNames.NAMES.random()
-        val scrambledName = scrambleLetters(originalFruitName)
-        return Fruit(originalFruitName, scrambledName)
+    override suspend fun getRandomQuizWord(): QuizSet {
+        val originalQuizWord = QuizLists.FRUITS_NAMES.random()
+        val scrambledName = scrambleLetters(originalQuizWord)
+        return QuizSet(originalQuizWord, scrambledName)
     }
 
     // 정답 확인

@@ -1,7 +1,7 @@
 package com.yourssu.unscramble.data
 
-object FruitNames {
-    val NAMES = listOf(
+object QuizLists {
+    val FRUITS_NAMES = listOf(
         "ORANGE",
         "BANANA",
         "LEMON",

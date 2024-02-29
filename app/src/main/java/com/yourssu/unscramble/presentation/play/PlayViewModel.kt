@@ -3,7 +3,7 @@ package com.yourssu.unscramble.presentation.play
 import android.text.Editable
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.yourssu.unscramble.repository.FruitRepository
+import com.yourssu.unscramble.repository.QuizRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PlayViewModel @Inject constructor(
-    private val fruitRepository: FruitRepository,
+    private val quizRepository: QuizRepository,
 ) : ViewModel() {
 
     private val _currentScore: MutableStateFlow<Int> = MutableStateFlow(0)
@@ -59,18 +59,18 @@ class PlayViewModel @Inject constructor(
     private val _questionScrambledFruitWord: MutableStateFlow<String> = MutableStateFlow("")
     val questionScrambledFruitWord: StateFlow<String> = _questionScrambledFruitWord.asStateFlow()
 
-    private val _originalFruitWord: MutableStateFlow<String> = MutableStateFlow("")
-    val originalFruitWord: StateFlow<String> = _originalFruitWord.asStateFlow()
+    private val _originalQuizWord: MutableStateFlow<String> = MutableStateFlow("")
+    val originalQuizWord: StateFlow<String> = _originalQuizWord.asStateFlow()
 
     init {
-        getQuestion()
+        getQuizWord()
     }
 
-    private fun getQuestion() {
+    private fun getQuizWord() {
         viewModelScope.launch {
-            val fruit = fruitRepository.getRandomQuestionFruitName()
-            _questionScrambledFruitWord.value = fruit.scrambledFruitName
-            _originalFruitWord.value = fruit.originalFruitName
+            val quizWord = quizRepository.getRandomQuizWord()
+            _questionScrambledFruitWord.value = quizWord.scrambledQuizWord
+            _originalQuizWord.value = quizWord.originalQuizWord
         }
     }
 
@@ -103,12 +103,12 @@ class PlayViewModel @Inject constructor(
     private fun updatePlayView() {
         _solvedProblem.update { it + 1 }
         _inputAnswer.value = ""
-        getQuestion()
+        getQuizWord()
     }
 
     private fun checkUserAnswer() {
         viewModelScope.launch {
-            val result = fruitRepository.checkAnswer(_inputAnswer.value, _originalFruitWord.value)
+            val result = quizRepository.checkAnswer(_inputAnswer.value, _originalQuizWord.value)
             if (result) {
                 _currentScore.update { (it + 10) }
             }
