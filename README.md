@@ -1,5 +1,24 @@
 ## unscramble-android-1
 
+🛠 **뒤죽박죽 되어 있는 스펠링을 보고 원래 단어를 맞추는 게임**🛠
+
+### 필수 조건
+- YDS TextField & Button 사용해보기
+- Clean Architecture
+- 레파지토리 패턴
+    - 랜덤으로 단어를 레퍼지토리에서 가져오기. String array resource
+    - getWord() : Repository
+- LiveData & Viewmodel
+    - 타이머 구현, 점수, process
+  
+ ### 기술 정리
+
+- MVVM + MVI
+- xml
+- Flow
+- hilt
+- base
+- YDS
 ### Branch name
 - 개인 개발 브랜치
   ` feature/{nickname}/{feature-name}`
