@@ -60,7 +60,6 @@ class PlayViewModel @Inject constructor(
     val questionScrambledFruitWord: StateFlow<String> = _questionScrambledFruitWord.asStateFlow()
 
     private val _originalQuizWord: MutableStateFlow<String> = MutableStateFlow("")
-    val originalQuizWord: StateFlow<String> = _originalQuizWord.asStateFlow()
 
     init {
         getQuizWord()
@@ -108,9 +107,8 @@ class PlayViewModel @Inject constructor(
 
     private fun checkUserAnswer() {
         viewModelScope.launch {
-            val result = quizRepository.checkAnswer(_inputAnswer.value, _originalQuizWord.value)
-            if (result) {
-                _currentScore.update { (it + 10) }
+            if (_inputAnswer.value.uppercase() == _originalQuizWord.value.uppercase()) {
+                _currentScore.update { it + 10 }
             }
         }
     }

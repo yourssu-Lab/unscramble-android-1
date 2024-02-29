@@ -15,9 +15,4 @@ class QuizDataSourceImpl : QuizDataSource {
         val scrambledName = scrambleLetters(originalQuizWord)
         return QuizSet(originalQuizWord, scrambledName)
     }
-
-    // 정답 확인
-    override suspend fun checkAnswer(userAnswer: String, answer: String): Boolean {
-        return userAnswer.uppercase() == answer
-    }
 }

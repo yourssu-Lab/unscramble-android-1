@@ -12,8 +12,4 @@ class QuizRepositoryImpl(private val quizDataSource: QuizDataSource) : QuizRepos
     override suspend fun getRandomQuizWord(): QuizSet {
         return quizDataSource.getRandomQuizWord()
     }
-
-    override suspend fun checkAnswer(userAnswer: String, answer: String): Boolean {
-        return quizDataSource.checkAnswer(userAnswer, answer)
-    }
 }
