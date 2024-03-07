@@ -98,12 +98,12 @@
                 android:layout_marginStart="10dp"
                 android:src="@drawable/ic_alarm"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_play_hour"
+                app:layout_constraintEnd_toStartOf="@+id/tv_play_time"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.yourssu.design.system.atom.Text
-                android:id="@+id/tv_play_hour"
+                android:id="@+id/tv_play_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
@@ -113,45 +113,12 @@
                 android:paddingVertical="4dp"
                 android:textColor="@color/textBright"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_play_separator"
                 app:layout_constraintStart_toEndOf="@+id/iv_alarm"
                 app:layout_constraintTop_toTopOf="parent"
                 app:text="@{viewModel.timerHour}"
                 app:typo="subtitle1" />
 
-            <com.yourssu.design.system.atom.Text
-                android:id="@+id/tv_play_separator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="2dp"
-                android:gravity="center"
-                android:paddingVertical="4dp"
-                android:text="@string/play_timer_separator"
-                android:textColor="@color/textBright"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/tv_play_minute"
-                app:layout_constraintStart_toEndOf="@+id/tv_play_hour"
-                app:layout_constraintTop_toTopOf="parent"
-                app:typo="subtitle1" />
 
-            <com.yourssu.design.system.atom.Text
-                android:id="@+id/tv_play_minute"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="15dp"
-                android:gravity="center"
-                android:paddingVertical="4dp"
-                android:textColor="@color/textBright"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/tv_play_separator"
-                app:layout_constraintTop_toTopOf="parent"
-                app:text="@{viewModel.timerMinute}"
-                app:typo="subtitle1" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.yourssu.design.system.atom.Text

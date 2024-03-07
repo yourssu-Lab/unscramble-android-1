@@ -20,6 +20,8 @@ class MainViewModel @Inject constructor() : ViewModel() {
     private val _time: MutableStateFlow<Int> = MutableStateFlow(0)
     val time: StateFlow<Int> = _time
 
+    private val _formattedTime: MutableStateFlow<String> = MutableStateFlow("00:00")
+    val formattedTime: StateFlow<String> = _formattedTime
     fun updateTime(time: Int) {
         _time.value = time
     }
@@ -38,8 +40,13 @@ class MainViewModel @Inject constructor() : ViewModel() {
                 val mHandler = Handler(Looper.getMainLooper())
                 mHandler.postDelayed({
                     // 반복실행할 구문
+                    val minutes = cnt / 60
+                    val remainingSeconds = cnt % 60
+                    _formattedTime.value = String.format("%02d:%02d", minutes, remainingSeconds)
                     cnt--
-                    Log.d("MainViewModel", "$cnt")
+
+                    Log.d("MainViewModel", "Formatted Time: ${_formattedTime.value}")
+
                     if (cnt <= 0) {
                         mTimer.cancel()
                         Log.d("MainViewModel", "타이머 종료")

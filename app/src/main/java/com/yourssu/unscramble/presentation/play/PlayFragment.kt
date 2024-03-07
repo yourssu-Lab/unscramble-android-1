@@ -1,6 +1,7 @@
 package com.yourssu.unscramble.presentation.play
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -34,15 +35,24 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
             findNavController().navigate(R.id.endFragment)
         }
 
-        mainViewModel.startTimer()
 
         viewLifecycleOwner.lifecycleScope.launch {
+
+            mainViewModel.startTimer()
+
             mainViewModel.isEnd
                 .collectLatest { isEnd ->
                     if (isEnd) {
                         findNavController().navigate(R.id.endFragment)
                     }
                 }
+
+            mainViewModel.formattedTime
+                .collectLatest { formattedTime ->
+                    Log.d("play",formattedTime)
+                // UI 업데이트
+                binding.tvPlayTime.text = formattedTime
+            }
         }
     }
 }
