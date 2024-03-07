@@ -32,6 +32,7 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         observeViewModel()
+        observeMainViewModel()
         viewModel.checkValid()
         observeNavigationToEnd()
         setupListeners()
@@ -44,6 +45,26 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
                     findNavController().navigate(R.id.endFragment)
                 }
             }
+        }
+    }
+
+    private fun observeMainViewModel() {
+        lifecycleScope.launch {
+            mainViewModel.startTimer()
+
+            mainViewModel.isEnd
+                .collectLatest { isEnd ->
+                    if (isEnd) {
+                        findNavController().navigate(R.id.endFragment)
+                    }
+                }
+
+            mainViewModel.formattedTime
+                .collectLatest { formattedTime ->
+                    Log.d("play", formattedTime)
+                    // UI 업데이트
+                    binding.tvPlayTime.text = formattedTime
+                }
         }
     }
 
@@ -65,26 +86,6 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
         binding.btnSkip.setOnClickListener {
             viewModel.onPlayButtonClick()
             binding.etAnswer.text.clear()
-        }
-
-
-        viewLifecycleOwner.lifecycleScope.launch {
-
-            mainViewModel.startTimer()
-
-            mainViewModel.isEnd
-                .collectLatest { isEnd ->
-                    if (isEnd) {
-                        findNavController().navigate(R.id.endFragment)
-                    }
-                }
-
-            mainViewModel.formattedTime
-                .collectLatest { formattedTime ->
-                    Log.d("play",formattedTime)
-                // UI 업데이트
-                binding.tvPlayTime.text = formattedTime
-            }
         }
     }
 }
