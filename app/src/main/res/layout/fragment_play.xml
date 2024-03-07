@@ -15,6 +15,11 @@
             type="com.yourssu.unscramble.presentation.play.PlayViewModel" />
     </data>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".presentation.play.PlayFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,19 +33,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.yourssu.design.system.atom.Text
-                android:id="@+id/tv_solved_problems"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:layout_marginStart="22dp"
-                android:textColor="@color/textBright"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:text="@{viewModel.solvedProblem}"
-                app:typo="subtitle1"
-                tools:text="0" />
+                <com.yourssu.design.system.atom.Text
+                    android:id="@+id/tv_solved_problems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginStart="22dp"
+                    android:textColor="@color/textBright"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:text="@{viewModel.solvedProblem.toString()}"
+                    app:typo="subtitle1"
+                    tools:text="0" />
 
             <com.yourssu.design.system.atom.Text
                 android:id="@+id/tv_total_problems"
@@ -65,21 +70,21 @@
                 app:layout_constraintEnd_toStartOf="@id/tv_score"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <com.yourssu.design.system.atom.Text
-                android:id="@+id/tv_score"
-                android:layout_width="50dp"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="5dp"
-                android:layout_marginEnd="5dp"
-                android:gravity="center"
-                android:textColor="@color/textBright"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:text="@{viewModel.currentScore}"
-                app:typo="subtitle1" />
+                <com.yourssu.design.system.atom.Text
+                    android:id="@+id/tv_score"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center"
+                    android:textColor="@color/textBright"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:text="@{viewModel.currentScore.toString()}"
+                    app:typo="subtitle1" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_play_time"
@@ -121,64 +126,89 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.yourssu.design.system.atom.Text
-            android:id="@+id/tv_problem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/textPrimary"
-            android:textSize="23sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/et_answer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_play_time"
-            app:text="@{viewModel.questionWord}"
-            app:typo="title1" />
+            <com.yourssu.design.system.atom.Text
+                android:id="@+id/tv_problem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/textBright"
+                android:textSize="23sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/et_answer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_play_time"
+                app:text="@{viewModel.questionScrambledFruitWord}"
+                app:typo="title1" />
 
-        <com.yourssu.design.system.atom.SimpleTextField
-            android:id="@+id/et_answer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:inputType="text"
-            android:maxLines="10"
-            android:textColor="@color/textPrimary"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_problem" />
+            <com.yourssu.design.system.atom.SimpleTextField
+                android:id="@+id/et_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"
+                android:afterTextChanged="@{viewModel.answerChangedListner}"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLines="10"
+                android:textColor="@color/textPrimary"
+                android:textSize="24sp"
+                app:helperLabelText="@{@string/play_answer_hint}"
+                app:isNegative="@{viewModel.textFieldIsNegative}"
+                app:layout_constraintBottom_toTopOf="@+id/cl_btns"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_problem" />
 
-        <com.yourssu.design.system.atom.BoxButton
-            android:id="@+id/btn_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintBottom_toTopOf="@+id/btn_skip"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:rounding="@{8}"
-            app:size="@{BoxButton.Large}"
-            app:text="@{viewModel.SubmitButtonText}"
-            app:type="@{BoxButton.FILLED}" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_btns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_answer">
 
 
-        <com.yourssu.design.system.atom.BoxButton
-            android:id="@+id/btn_skip"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:rounding="@{8}"
-            app:size="@{BoxButton.Large}"
-            app:text="@{viewModel.SkipButtonText}"
-            app:type="@{BoxButton.LINE}" />
+                <com.yourssu.design.system.atom.BoxButton
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="30dp"
+                    app:isDisabled="@{viewModel.submitBtnIsDisable}"
+                    app:layout_constraintBottom_toTopOf="@+id/btn_skip"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:rounding="@{8}"
+                    app:size="@{BoxButton.Large}"
+                    app:text="@{@string/all_submit}"
+                    app:type="@{BoxButton.FILLED}" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <com.yourssu.design.system.atom.BoxButton
+                    android:id="@+id/btn_skip"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_submit"
+                    app:rounding="@{8}"
+                    app:size="@{BoxButton.Large}"
+                    app:text="@{@string/all_skip}"
+                    app:type="@{BoxButton.LINE}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
 </layout>
