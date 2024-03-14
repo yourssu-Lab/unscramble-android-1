@@ -28,11 +28,8 @@ class PlayViewModel @Inject constructor(
     private val _solvedProblem: MutableStateFlow<Int> = MutableStateFlow(1)
     val solvedProblem: StateFlow<Int> = _solvedProblem.asStateFlow()
 
-    private val _timerHour: MutableStateFlow<String> = MutableStateFlow("00")
-    val timerHour: StateFlow<String> = _timerHour.asStateFlow()
-
-    private val _timerMinute: MutableStateFlow<String> = MutableStateFlow("00")
-    val timerMinute: StateFlow<String> = _timerMinute.asStateFlow()
+    private val _formattedTime = MutableStateFlow("00:00")
+    val formattedTime: StateFlow<String> = _formattedTime.asStateFlow()
 
     // 유효성 판단에 따른 버튼 활성화 관련 코드
     // 사용자가 입력한 답안

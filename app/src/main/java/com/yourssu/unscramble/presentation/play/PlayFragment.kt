@@ -13,7 +13,6 @@ import com.yourssu.unscramble.databinding.FragmentPlayBinding
 import com.yourssu.unscramble.presentation.MainViewModel
 import com.yourssu.unscramble.util.base.BindFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -61,11 +60,10 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
                 }
 
             mainViewModel.formattedTime
-                .buffer()
                 .collect { formattedTime ->
-                    Log.d("play", formattedTime)
+                    Log.d("play", formattedTime) //여기 로그 안나옴
                     // UI 업데이트
-                    binding.tvPlayTime.text = formattedTime
+                    binding.tvPlayTime.text = formattedTime.toString()
                 }
         }
     }
