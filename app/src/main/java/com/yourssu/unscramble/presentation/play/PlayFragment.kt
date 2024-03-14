@@ -1,6 +1,7 @@
 package com.yourssu.unscramble.presentation.play
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -31,6 +32,7 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
         binding.lifecycleOwner = viewLifecycleOwner
 
         observeViewModel()
+        observeMainViewModel()
         viewModel.checkValid()
         observeNavigationToEnd()
         setupListeners()
@@ -43,6 +45,26 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
                     findNavController().navigate(R.id.endFragment)
                 }
             }
+        }
+    }
+
+    private fun observeMainViewModel() {
+        lifecycleScope.launch {
+            mainViewModel.startTimer()
+
+            mainViewModel.isEnd
+                .collectLatest { isEnd ->
+                    if (isEnd) {
+                        findNavController().navigate(R.id.endFragment)
+                    }
+                }
+
+            mainViewModel.formattedTime
+                .collect { formattedTime ->
+                    Log.d("play", formattedTime) //여기 로그 안나옴
+                    // UI 업데이트
+                    binding.tvPlayTime.text = formattedTime.toString()
+                }
         }
     }
 
@@ -64,17 +86,6 @@ class PlayFragment : BindFragment<FragmentPlayBinding>() {
         binding.btnSkip.setOnClickListener {
             viewModel.onPlayButtonClick()
             binding.etAnswer.text.clear()
-        }
-
-        mainViewModel.startTimer()
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            mainViewModel.isEnd
-                .collectLatest { isEnd ->
-                    if (isEnd) {
-                        findNavController().navigate(R.id.endFragment)
-                    }
-                }
         }
     }
 }
